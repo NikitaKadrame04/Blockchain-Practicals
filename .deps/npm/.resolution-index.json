@@ -1,0 +1,10 @@
+{
+  "contracts/Bank.sol": {
+    "__sources__": {
+      "contracts/Bank.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.13;\r\ncontract Bank{\r\n    uint balance=0;\r\n    address public accOwner;\r\n    constructor (){\r\n        accOwner=msg.sender;\r\n    }\r\n    function Deposit() public payable{\r\n        require(accOwner==msg.sender, \"You are not an account owner\");\r\n        require(msg.value>0, \"Amount should be greater than 0!\");\r\n        balance+=msg.value;\r\n    }\r\n    function Withdraw() public payable{\r\n        require(accOwner==msg.sender, \"You are not an account owner\");\r\n        require(msg.value>0, \"Amount should be greater than 0!\");\r\n        balance-=msg.value;\r\n    }\r\n    function showBalance() public view returns(uint){\r\n        require(accOwner==msg.sender, \"You are not an account owner\");\r\n        return balance;\r\n    }\r\n}",
+        "file": "contracts/Bank.sol"
+      }
+    }
+  }
+}
