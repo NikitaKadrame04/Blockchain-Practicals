@@ -6,5 +6,13 @@
         "file": "contracts/Bank.sol"
       }
     }
+  },
+  "contracts/Student.sol": {
+    "__sources__": {
+      "contracts/Student.sol": {
+        "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.13;\r\n\r\n//Structures\r\ncontract Student{\r\n   struct student{\r\n    uint roll_no;\r\n    string name;\r\n   }\r\n\r\n   //Array\r\n   student[] public studentarr;\r\n\r\n   function addStudent(uint roll_no, string memory name) public {\r\n    for(uint i=0; i<studentarr.length; i++){\r\n        if(studentarr[i].roll_no==roll_no){\r\n            revert(\"Student with this roll no already exists\");\r\n        }\r\n    }\r\n    studentarr.push(student(roll_no,name));\r\n   }\r\n\r\n   function getStudentsLength()public view returns(uint){\r\n    return studentarr.length;\r\n   }\r\n\r\n   function displayAllStudents()public view returns(student[] memory){\r\n    return studentarr;\r\n   }\r\n\r\n   function getStudentByIndex(uint idx) public view returns(student memory){\r\n    require(idx<studentarr.length,\"index out of bound\");\r\n    return studentarr[idx];\r\n   }\r\n   //Fallback\r\n\r\n    fallback() external payable { \r\n        //Handles external fucntion calls that is not there in our contract\r\n    }\r\n\r\n    receive() external payable { \r\n        //Handles ether sent by external user but without data mentioned\r\n    }\r\n\r\n}",
+        "file": "contracts/Student.sol"
+      }
+    }
   }
 }
